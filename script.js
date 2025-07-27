@@ -1,3 +1,17 @@
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        humanScore += 1;
+        computerScore += 1;
+    } else if (humanChoice === "rock" && computerChoice === "paper") {
+        computerScore += 1;
+    } else if (humanChoice === "rock" && computerChoice === "scissors") {
+        humanScore += 1;
+    } else if (humanChoice === "rock" && computerChoice === "paper")
+}; 
+
 function getComputerSelection() {
     let num_choice = Math.floor(Math.random * 3);
     if (num_choice === 0) {
@@ -11,4 +25,9 @@ function getComputerSelection() {
 
 function getHumanSelection() {
     return prompt("Please enter your choice:");
-}
+};
+
+const humanSelection = getHumanSelection();
+const computerSelection = getHumanSelection();
+
+playRound(humanSelection, computerSelection)
