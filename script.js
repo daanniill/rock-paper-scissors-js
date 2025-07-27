@@ -5,11 +5,14 @@ function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         humanScore += 1;
         computerScore += 1;
-    } else if (humanChoice === "rock" && computerChoice === "paper") {
-        computerScore += 1;
-    } else if (humanChoice === "rock" && computerChoice === "scissors") {
+    } else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")) {
         humanScore += 1;
-    } else if (humanChoice === "rock" && computerChoice === "paper")
+    } else {
+        computerScore += 1;
+    }
 }; 
 
 function getComputerSelection() {
