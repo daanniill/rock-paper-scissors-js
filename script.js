@@ -1,19 +1,33 @@
-let humanScore = 0;
-let computerScore = 0;
+function playGame(humanChoice, computerChoice) {
+    let humanScore = 0;
+    let computerScore = 0;
+    function playRound() {
+        if (humanChoice === computerChoice) {
+            humanScore += 1;
+            computerScore += 1;
+        } else if (
+            (humanChoice === "rock" && computerChoice === "scissors") ||
+            (humanChoice === "paper" && computerChoice === "rock") ||
+            (humanChoice === "scissors" && computerChoice === "paper")) {
+            humanScore += 1;
+        } else {
+            computerScore += 1;
+        }
+    }; 
 
-function playRound(humanChoice, computerChoice) {
-    if (humanChoice === computerChoice) {
-        humanScore += 1;
-        computerScore += 1;
-    } else if (
-        (humanChoice === "rock" && computerChoice === "scissors") ||
-        (humanChoice === "paper" && computerChoice === "rock") ||
-        (humanChoice === "scissors" && computerChoice === "paper")) {
-        humanScore += 1;
-    } else {
-        computerScore += 1;
+    for (let i = 0; i < 5; i++) {
+        playRound();
     }
-}; 
+
+    if (humanScore === computerScore) {
+        console.log("it's a tie")
+    } else if (humanScore > computerScore) {
+        console.log("human wins!")
+    } else {
+        console.log("computer wins!")
+    }
+}
+
 
 function getComputerSelection() {
     let num_choice = Math.floor(Math.random * 3);
@@ -31,6 +45,6 @@ function getHumanSelection() {
 };
 
 const humanSelection = getHumanSelection();
-const computerSelection = getHumanSelection();
+const computerSelection = getComputerSelection();
 
-playRound(humanSelection, computerSelection)
+playGame(humanSelection, computerSelection);
