@@ -49,40 +49,18 @@ function playRound(humanChoice, computerChoice) {
     }
 
     resultText += `<br>Score: Human ${humanScore} - Computer ${computerScore}`;
-    resultDiv.textContent = resultText;
+    resultDiv.innerHTML = resultText;
 }; 
 
 function setupGame() {
-    const choices = 
+    const choices = ["rock", "paper", "scissors"]
+    choices.forEach(choice => {
+        const button = document.querySelector(`#${choice}`);
+        button.addEventListener("click", () => {
+            const computerChoice = getComputerSelection();
+            playRound(choice, computerChoice);
+        });
+    });
 }
 
-function playGame() {
-    const humanSelection = getHumanSelection();
-    const computerSelection = getComputerSelection();
-    playRound(humanSelection, computerSelection);
-    
-    if (humanScore === computerScore) {
-        console.log("it's a tie")
-    } else if (humanScore > computerScore) {
-        console.log("human wins!")
-    } else {
-        console.log(humanScore)
-        console.log(computerScore)
-        console.log("computer wins!")
-    }
-}
-
-
-const start = document.querySelector("#start");
-rock.addEventListener("click", () => {
-    console.log("Game Start!");
-
-    const rock = document.createElement("button")
-    rock.setAttribute("id", "rock")
-    const paper = document.createElement("button")
-    paper.setAttribute("id", "paper")
-    const scissors = document.createElement("button")
-    scissors.setAttribute("id", "scissors")
-
-    playGame();
-});
+setupGame()
